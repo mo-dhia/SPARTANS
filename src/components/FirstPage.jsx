@@ -8,7 +8,6 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
 
   return (
     <div>
-     
       <div
         style={{
           margin: "0",

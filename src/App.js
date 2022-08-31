@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import FirstPage from "./components/FirstPage";
 import Navigation from "./components/Navigation";
 import axios from "axios";
+import blabla from "./assets/images/background.jpg";
 
 const App = () => {
   const [todos, setTodos] = useState(false);
@@ -10,11 +11,7 @@ const App = () => {
   const [temp, setTemp] = useState(0);
   const [weatherIcon, setWeatherIcon] = useState("50n");
 
-  const [firstPage, setFirstPage] = useState(false);
-  const [secondPage, setSecondPage] = useState(false);
-  const [thirdPagePage, setThirdPagePage] = useState(false);
-  const [forthPage, setForthPage] = useState(false);
-  const [fifthPage, setFifthPage] = useState(false);
+  const [page, setPage] = useState(3);
 
   useEffect(() => {
     getWeather();
@@ -48,13 +45,7 @@ const App = () => {
 
   return (
     <div>
-      <Navigation
-        firstPage={firstPage}
-        secondPage={secondPage}
-        thirdPagePage={thirdPagePage}
-        forthPage={forthPage}
-        fifthPage={fifthPage}
-      />
+      <Navigation  page={page} setPage={setPage} />
       <FirstPage temp={temp} weatherIcon={weatherIcon} schedule={schedule[2]} />
       <div
         style={{

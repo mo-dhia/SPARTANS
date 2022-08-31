@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import UserIcon from "../assets/images/user.svg";
 
-export default function Navigation({
-  firstPage,
-  secondPage,
-  thirdPage,
-  forthPage,
-  fifthPage,
-}) {
+export default function Navigation({ page, setPage }) {
   const [pagesHover, setPagesHover] = useState(false);
-  const [firstPageHover, setFirstPageHover] = useState(false);
-  const [secondPageHover, setSecondPageHover] = useState(false);
-  const [thirdPageHover, setThirdPageHover] = useState(false);
-  const [forthPageHover, setForthPageHover] = useState(false);
-  const [fifthPageHover, setFifthPageHover] = useState(false);
 
   const [menuHover, setMenuHover] = useState(false);
   const [userHover, setuserHover] = useState(false);
   const [SettingsHover, setSettingsHover] = useState(false);
 
-  console.log(firstPageHover)
+  console.log(page);
   return (
     <div>
       {/* top Left */}
@@ -89,135 +78,119 @@ export default function Navigation({
       </div>
       {/* Navigation Left */}
       <div
-        style={{
-          cursor: "pointer",
-          color: "white",
-          margin: "0",
-          textShadow:
-            "0px 18px 5px rgba(0,0,0,0.1), 10px 20px 5px rgba(0,0,0,0.05), -10px 20px 5px rgba(0,0,0,0.05)",
-          fontFamily: "'Righteous', cursive",
+        onMouseOut={() => {
+          setPagesHover(false);
         }}
+        onMouseOver={() => {
+          setPagesHover(true);
+        }}
+        style={Object.assign(
+          {
+            cursor: "pointer",
+            color: "white",
+            margin: "0",
+            textShadow:
+              "0px 18px 5px rgba(0,0,0,0.1), 10px 20px 5px rgba(0,0,0,0.05), -10px 20px 5px rgba(0,0,0,0.05)",
+            fontFamily: "'Righteous', cursive",
+          },
+          pagesHover ? { opacity: "1" } : { opacity: "0.5" }
+        )}
       >
-        <h1
-          onMouseOut={() => {
-            setPagesHover(false);
-            setFirstPageHover(false);
-          }}
-          onMouseOver={() => {
-            setPagesHover(true);
-            setFirstPageHover(true);
-          }}
+        <div
+          onClick={() => setPage(1)}
           style={Object.assign(
             {
               transition: "transform .3s",
               cursor: "pointer",
               position: "absolute",
               transform: "translate(-50%, -50%)",
-              left: "1%",
-              top: "30%",
+              fontWeight: "bold",
+              fontSize: "30px",
             },
-            pagesHover
-              ? firstPageHover 
-                ? { opacity: "1", transform: "scale(1.8)" }
-                : { opacity: "1" }
-              : { opacity: "0.5" }
+            page === 1
+              ? {
+                  left: "0.7%",
+                  top: "29%",
+                  transform: "scale(3)",
+                  zIndex: "-1",
+                }
+              : { left: "1%", top: "35%", zIndex: "2" }
           )}
         >
           .
-        </h1>
-        <h1
-          onMouseOut={() => {
-            setPagesHover(false);
-            setSecondPageHover(false);
-          }}
-          onMouseOver={() => {
-            setPagesHover(true);
-            setSecondPageHover(true);
-          }}
+        </div>
+        <div
+          onClick={() => setPage(2)}
           style={Object.assign(
             {
               transition: "transform .3s",
               cursor: "pointer",
               position: "absolute",
               transform: "translate(-50%, -50%)",
-              left: "0.75%",
-              top: "29%",
-              transform: "scale(3)",
+              fontWeight: "bold",
+              fontSize: "30px",
             },
-            {}
+            page === 2
+              ? { left: "0.7%", top: "34%", transform: "scale(3)" ,zIndex: "-1",}
+              : { left: "1%", top: "40%", zIndex: "2" }
           )}
         >
           .
-        </h1>
-        <h1
-          onMouseOut={() => {
-            setPagesHover(false);
-            setThirdPageHover(false);
-          }}
-          onMouseOver={() => {
-            setPagesHover(true);
-            setThirdPageHover(true);
-          }}
+        </div>
+        <div
+          onClick={() => setPage(3)}
           style={Object.assign(
             {
               transition: "transform .3s",
               cursor: "pointer",
               position: "absolute",
               transform: "translate(-50%, -50%)",
-              left: "1%",
-              top: "40%",
+              fontWeight: "bold",
+              fontSize: "30px",
             },
-            {}
+            page === 3
+              ? { left: "0.7%", top: "39%", transform: "scale(3)" ,zIndex: "-1",}
+              : { left: "1%", top: "45%", zIndex: "2" }
           )}
         >
           .
-        </h1>
-        <h1
-          onMouseOut={() => {
-            setPagesHover(false);
-            setForthPageHover(false);
-          }}
-          onMouseOver={() => {
-            setPagesHover(true);
-            setForthPageHover(true);
-          }}
+        </div>
+        <div
+          onClick={() => setPage(4)}
           style={Object.assign(
             {
               transition: "transform .3s",
               cursor: "pointer",
               position: "absolute",
               transform: "translate(-50%, -50%)",
-              left: "1%",
-              top: "45%",
+              fontWeight: "bold",
+              fontSize: "30px",
             },
-            {}
+            page === 4
+              ? { left: "0.7%", top: "44%", transform: "scale(3)" ,zIndex: "-1",}
+              : { left: "1%", top: "50%", zIndex: "2" }
           )}
         >
           .
-        </h1>
-        <h1
-          onMouseOut={() => {
-            setPagesHover(false);
-            setFifthPageHover(false);
-          }}
-          onMouseOver={() => {
-            setPagesHover(true);
-            setFifthPageHover(true);
-          }}
+        </div>
+        <div
+          onClick={() => setPage(5)}
           style={Object.assign(
             {
               transition: "transform .3s",
               cursor: "pointer",
               position: "absolute",
               transform: "translate(-50%, -50%)",
-              left: "1%",
-              top: "50%",
+              fontWeight: "bold",
+              fontSize: "30px",
             },
-            {}
+            page === 5
+              ? { left: "0.7%", top: "49%", transform: "scale(3)" ,zIndex: "-1",}
+              : { left: "1%", top: "55%", zIndex: "2" }
           )}
         >
           .
-        </h1>
+        </div>
       </div>
     </div>
   );
