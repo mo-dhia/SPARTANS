@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import UserIcon from "../assets/images/user.svg";
 
-export default function Navigation({ page, setPage }) {
+export default function Navigation({ page, setPage, height, width }) {
   const [pagesHover, setPagesHover] = useState(false);
 
   const [menuHover, setMenuHover] = useState(false);
   const [userHover, setuserHover] = useState(false);
   const [SettingsHover, setSettingsHover] = useState(false);
 
-  console.log(page);
+  console.log(height);
   return (
     <div>
+      {/* <h1 style={{ color: "white" }}>{height}</h1> */}
       {/* top Left */}
       <div
         style={{
@@ -108,12 +109,19 @@ export default function Navigation({ page, setPage }) {
               fontSize: "30px",
             },
             page === 1
-              ? {
-                  left: "0.7%",
-                  top: "29%",
-                  transform: "scale(3)",
-                  zIndex: "-1",
-                }
+              ? height > 700
+                ? {
+                    left: "0.7%",
+                    top: "30%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
+                : {
+                    left: "0.7%",
+                    top: "29%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
               : { left: "1%", top: "35%", zIndex: "2" }
           )}
         >
@@ -131,7 +139,19 @@ export default function Navigation({ page, setPage }) {
               fontSize: "30px",
             },
             page === 2
-              ? { left: "0.7%", top: "34%", transform: "scale(3)" ,zIndex: "-1",}
+              ? height > 700
+                ? {
+                    left: "0.7%",
+                    top: "35%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
+                : {
+                    left: "0.7%",
+                    top: "34%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
               : { left: "1%", top: "40%", zIndex: "2" }
           )}
         >
@@ -149,7 +169,19 @@ export default function Navigation({ page, setPage }) {
               fontSize: "30px",
             },
             page === 3
-              ? { left: "0.7%", top: "39%", transform: "scale(3)" ,zIndex: "-1",}
+              ? height > 700
+                ? {
+                    left: "0.7%",
+                    top: "40%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
+                : {
+                    left: "0.7%",
+                    top: "39.35%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
               : { left: "1%", top: "45%", zIndex: "2" }
           )}
         >
@@ -167,7 +199,19 @@ export default function Navigation({ page, setPage }) {
               fontSize: "30px",
             },
             page === 4
-              ? { left: "0.7%", top: "44%", transform: "scale(3)" ,zIndex: "-1",}
+              ? height > 700
+                ? {
+                    left: "0.7%",
+                    top: "45%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
+                : {
+                    left: "0.7%",
+                    top: "44%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
               : { left: "1%", top: "50%", zIndex: "2" }
           )}
         >
@@ -185,7 +229,19 @@ export default function Navigation({ page, setPage }) {
               fontSize: "30px",
             },
             page === 5
-              ? { left: "0.7%", top: "49%", transform: "scale(3)" ,zIndex: "-1",}
+              ? height > 700
+                ? {
+                    left: "0.7%",
+                    top: "50%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
+                : {
+                    left: "0.7%",
+                    top: "49%",
+                    transform: "scale(3)",
+                    zIndex: "-1",
+                  }
               : { left: "1%", top: "55%", zIndex: "2" }
           )}
         >

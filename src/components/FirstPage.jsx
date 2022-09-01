@@ -4,8 +4,6 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
   const [leftArrowHover, setLeftArrowHover] = useState(false);
   const [rightArrowHover, setRightArrowHover] = useState(false);
 
-
-
   return (
     <div>
       <div
@@ -28,19 +26,19 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
           }}
         >
           {"SPARTANS".split("").map((e, i) => (
-            <span
-              style={
-                i >= 6
-                  ? {
-                      color: "#b22c33",
-                      filter: "drop-shadow(1px 9px 2px rgb(0 0 0 / 0.4))",
-                    }
-                  : { filter: "drop-shadow(1px 9px 2px rgb(0 0 0 / 0.4))" }
-              }
+            <div
+              className={i >= 6 ? "lineUp" : ""}
+              style={Object.assign(
+                {
+                  filter: "drop-shadow(1px 9px 2px rgb(0 0 0 / 0.4))",
+                  display: "inline-block",
+                },
+                i >= 6 ? { color: "#b22c33" } : {}
+              )}
               key={i}
             >
               {e}
-            </span>
+            </div>
           ))}
         </div>
         <div

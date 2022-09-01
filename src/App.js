@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import FirstPage from "./components/FirstPage";
 import Navigation from "./components/Navigation";
 import axios from "axios";
-import blabla from "./assets/images/background.jpg";
-
+import useWindowDimensions from "./components/windowDimensions";
 const App = () => {
   const [todos, setTodos] = useState(false);
 
@@ -12,7 +11,9 @@ const App = () => {
   const [weatherIcon, setWeatherIcon] = useState("50n");
 
   const [page, setPage] = useState(3);
-
+  const { height, width } = useWindowDimensions();
+  
+  console.log(width);
   useEffect(() => {
     getWeather();
     const todos = JSON.parse(localStorage.getItem("todos"));
@@ -45,12 +46,17 @@ const App = () => {
 
   return (
     <div>
-      <Navigation  page={page} setPage={setPage} />
-      <FirstPage temp={temp} weatherIcon={weatherIcon} schedule={schedule[2]} />
+      <Navigation width={width} height={height} page={page} setPage={setPage} />
+      <FirstPage
+        width={width}
+        height={height}
+        temp={temp}
+        weatherIcon={weatherIcon}
+        schedule={schedule[2]}
+      />
       <div
         style={{
           backgroundColor: "lavenderblush",
-
           transform: "rotate(136deg)",
           padding: "45px 45px",
           position: "fixed",
