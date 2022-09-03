@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
-export default function FirstPage({ schedule, weatherIcon, temp }) {
+export default function FirstPage({
+  schedule,
+  weatherIcon,
+  temp,
+  moveSchedule,
+}) {
   const [leftArrowHover, setLeftArrowHover] = useState(false);
   const [rightArrowHover, setRightArrowHover] = useState(false);
 
   return (
-    <div>
+    <div style={{ height: "100vh" }}>
       <div
         style={{
           margin: "0",
@@ -50,6 +55,7 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
           }}
         >
           <div
+            onClick={() => moveSchedule("Left")}
             style={Object.assign(
               {
                 transition: "transform .2s",
@@ -92,7 +98,7 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
                     {e}
                   </div>
                 ))
-              : "- Day".split("").map((e, i) => (
+              : "-\xa0Day".split("").map((e, i) => (
                   <div
                     style={Object.assign(
                       { display: "inline-block" },
@@ -106,6 +112,7 @@ export default function FirstPage({ schedule, weatherIcon, temp }) {
             : "No Schedule"}
           &nbsp;
           <div
+            onClick={() => moveSchedule("Right")}
             style={Object.assign(
               {
                 transition: "transform .2s",

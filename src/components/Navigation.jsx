@@ -50,6 +50,7 @@ export default function Navigation({ page, setPage, height, width }) {
         />
         {/* { opacity: "1", transform: "scale(1.8)" } */}
         <hr
+        onClick={()=> {window.scroll({top: "300", left: 0, behavior: 'smooth' })}}
           onMouseOut={() => {
             setMenuHover(false);
             setSettingsHover(false);
@@ -103,7 +104,7 @@ export default function Navigation({ page, setPage, height, width }) {
             {
               transition: "transform .3s",
               cursor: "pointer",
-              position: "absolute",
+              position: "fixed",
               transform: "translate(-50%, -50%)",
               fontWeight: "bold",
               fontSize: "30px",
@@ -133,7 +134,7 @@ export default function Navigation({ page, setPage, height, width }) {
             {
               transition: "transform .3s",
               cursor: "pointer",
-              position: "absolute",
+              position: "fixed",
               transform: "translate(-50%, -50%)",
               fontWeight: "bold",
               fontSize: "30px",
@@ -163,7 +164,7 @@ export default function Navigation({ page, setPage, height, width }) {
             {
               transition: "transform .3s",
               cursor: "pointer",
-              position: "absolute",
+              position: "fixed",
               transform: "translate(-50%, -50%)",
               fontWeight: "bold",
               fontSize: "30px",
@@ -193,7 +194,7 @@ export default function Navigation({ page, setPage, height, width }) {
             {
               transition: "transform .3s",
               cursor: "pointer",
-              position: "absolute",
+              position: "fixed",
               transform: "translate(-50%, -50%)",
               fontWeight: "bold",
               fontSize: "30px",
@@ -223,7 +224,7 @@ export default function Navigation({ page, setPage, height, width }) {
             {
               transition: "transform .3s",
               cursor: "pointer",
-              position: "absolute",
+              position: "fixed",
               transform: "translate(-50%, -50%)",
               fontWeight: "bold",
               fontSize: "30px",
