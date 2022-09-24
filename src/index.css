@@ -1,13 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Shadows+Into+Light&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background-image: url("./assets/images/background.jpg");
+  
+  background-color: hsl(0, 0%, 0%);
+  
+ }
+
+ @keyframes anim-ns {
+  0% {
+    opacity: 1;
+    transform: translateY(-1000%);
+  }
+ 
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.ns {
+  animation: 1.3s anim-ns ;
 }
+

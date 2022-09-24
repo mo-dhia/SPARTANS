@@ -26,19 +26,19 @@ export default function FirstPage({
         <div
           style={{
             color: " white",
-            display: "inline-block",
             fontSize: "45px",
+            textAlign: "center",
           }}
         >
           {"SPARTANS".split("").map((e, i) => (
             <div
-              className={i >= 6 ? "lineUp" : ""}
+              className={i >= 6 ? "ns" : ""}
               style={Object.assign(
                 {
                   filter: "drop-shadow(1px 9px 2px rgb(0 0 0 / 0.4))",
                   display: "inline-block",
                 },
-                i >= 6 ? { color: "#b22c33" } : {}
+                i >= 6 ? { color: "#b22c33" } : null
               )}
               key={i}
             >
@@ -62,7 +62,9 @@ export default function FirstPage({
                 cursor: "pointer",
                 display: "inline-block",
               },
-              leftArrowHover ? { transform: "scale(3)", color: "#b22c33" } : {}
+              leftArrowHover
+                ? { transform: "scale(3)", color: "#b22c33" }
+                : null
             )}
             onMouseOver={() => setLeftArrowHover(true)}
             onMouseOut={() => setLeftArrowHover(false)}
@@ -75,7 +77,7 @@ export default function FirstPage({
                 <div
                   style={Object.assign(
                     { display: "inline-block" },
-                    i >= schedule["1"].length - 2 ? { color: "#b22c33" } : {}
+                    i >= schedule["1"].length - 2 ? { color: "#b22c33" } : null
                   )}
                   key={i}
                 >
@@ -91,7 +93,9 @@ export default function FirstPage({
                   <div
                     style={Object.assign(
                       { display: "inline-block" },
-                      i >= schedule["2"].length - 2 ? { color: "#b22c33" } : {}
+                      i >= schedule["2"].length - 2
+                        ? { color: "#b22c33" }
+                        : null
                     )}
                     key={i}
                   >
@@ -102,7 +106,7 @@ export default function FirstPage({
                   <div
                     style={Object.assign(
                       { display: "inline-block" },
-                      i >= 4 ? { color: "#b22c33" } : {}
+                      i >= 4 ? { color: "#b22c33" } : null
                     )}
                     key={i}
                   >
@@ -119,7 +123,9 @@ export default function FirstPage({
                 cursor: "pointer",
                 display: "inline-block",
               },
-              rightArrowHover ? { transform: "scale(3)", color: "#b22c33" } : {}
+              rightArrowHover
+                ? { transform: "scale(3)", color: "#b22c33" }
+                : null
             )}
             onMouseOver={() => setRightArrowHover(true)}
             onMouseOut={() => setRightArrowHover(false)}
@@ -146,7 +152,8 @@ export default function FirstPage({
         />{" "}
         &nbsp;
         {`${new Date().toLocaleString("default", { weekday: "long" })}  `}
-        &nbsp; <span style={{ fontSize: "15px" }}>{temp.toFixed()}°</span>
+        &nbsp; <span style={{ fontSize: "15px" }}>{temp.toFixed()}</span>
+        <span>°</span>
       </h5>
     </div>
   );

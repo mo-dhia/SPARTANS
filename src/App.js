@@ -1,10 +1,10 @@
-import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
+
 import Navigation from "./components/Navigation";
 import axios from "axios";
 import useWindowDimensions from "./components/windowDimensions";
 
-import FirstPage from "./components/pages/FirstPage";
+import FirstPage from "./components/pages/FirstPage/FirstPage";
 import SecondPage from "./components/pages/SecondPage";
 import ThirdPage from "./components/pages/ThirdPage";
 import ForthPage from "./components/pages/ForthPage";
@@ -17,7 +17,7 @@ const App = () => {
   const [temp, setTemp] = useState(0);
   const [weatherIcon, setWeatherIcon] = useState("50n");
 
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [goingUp, setGoingUp] = useState(false);
   const { height, width } = useWindowDimensions();
 
@@ -26,13 +26,29 @@ const App = () => {
     const scheduleStorage = JSON.parse(localStorage.getItem("schedule"));
     if (scheduleStorage) {
       setSchedule(scheduleStorage);
-      console.log(localStorage.getItem("schedule"))
     }
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
+      const page1 = height / 3;
+      const page2 = height / 3 + height;
+      const page3 = height / 3 + height * 2;
+      const page4 = height / 3 + height * 3;
+
       const currentScrollY = window.scrollY;
+      if (currentScrollY < page1) {
+        setPage(1);
+      } else if (currentScrollY > page1 && currentScrollY < page2) {
+        setPage(2);
+      } else if (currentScrollY > page2 && currentScrollY < page3) {
+        setPage(3);
+      } else if (currentScrollY > page3 && currentScrollY < page4) {
+        setPage(4);
+      } else if (currentScrollY > page4) {
+        setPage(5);
+      }
+
       if (prevScrollY.current < currentScrollY && goingUp) {
         setGoingUp(false);
       }
@@ -65,7 +81,6 @@ const App = () => {
   }
 
   const moveSchedule = (position) => {
-    // const reFormatSchedule = schedule;
     const result = [];
     if (position === "Right")
       for (let i = 1; i < schedule.length + 1; i++) {
@@ -81,13 +96,10 @@ const App = () => {
       }
     setSchedule(result);
   };
+  console.log(height, "height");
 
   return (
     <div>
-      <button onClick={()=>setSchedule(!schedule)} 
-      style={{ position: "absolute", left: "40%", top: "20%" }}>
-        qsdaze
-      </button>
       <Navigation width={width} height={height} page={page} setPage={setPage} />
       <FirstPage
         width={width}
@@ -107,39 +119,12 @@ const App = () => {
       <ForthPage />
       <FifthPage />
 
-      {/* <div
-        style={{
-          backgroundColor: "lavenderblush",
-          transform: "rotate(118deg)",
-          padding: "40px",
-          position: "absolute",
-          right: "0",
-          top: "0%",
-          left: "-199%",
-          width: "600%",
-        }}
-      /> */}
-
-      {/* <div
-        style={{
-          backgroundColor: "#b22c33",
-          transform: "rotate(118deg)",
-          padding: "40px",
-          position: "absolute",
-          right: "0",
-          top: "0%",
-          left: "-185%",
-          width: "600%",
-        }}
-      /> */}
-      {/* polygon(100% 0, 100% 3%, 0 64%, 0 61%) */}
       <div
         style={{
           backgroundColor: "lavenderblush",
-          clipPath: "polygon(100% 0, 100% 3.5%, 0 64.5%, 0 60%)",
+          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)",
           position: "absolute",
-          width: " 8%",
-          top: "7.84vh",
+          top: "0vh",
           left: "auto",
           right: "0",
           bottom: "auto",
@@ -151,10 +136,9 @@ const App = () => {
       <div
         style={{
           backgroundColor: "#b22c33",
-          clipPath: "polygon(100% 0, 100% 4%, 0 65%, 0 61%)",
+          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)",
           position: "absolute",
-          width: " 8%",
-          top: "52vh",
+          top: "54vh",
           left: "auto",
           right: "0",
           bottom: "auto",

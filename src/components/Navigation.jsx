@@ -8,7 +8,7 @@ export default function Navigation({ page, setPage, height, width }) {
   const [userHover, setuserHover] = useState(false);
   const [SettingsHover, setSettingsHover] = useState(false);
 
-  console.log(height);
+  //console.log(height);
   return (
     <div>
       {/* <h1 style={{ color: "white" }}>{height}</h1> */}
