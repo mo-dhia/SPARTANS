@@ -1,8 +1,8 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function SecondPage() {
 
-  
+
   return (
     <div
       style={{
@@ -11,6 +11,9 @@ export default function SecondPage() {
       }}
     >
       SecondPage
+      <div style={{ color: "white", position: "absolute", bottom: "-80%", top: "auto" }}>
+        test
+      </div>
     </div>
   );
 }

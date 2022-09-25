@@ -96,7 +96,7 @@ const App = () => {
       }
     setSchedule(result);
   };
-  console.log(height, "height");
+  console.log(page, "page");
 
   return (
     <div>
@@ -119,33 +119,67 @@ const App = () => {
       <ForthPage />
       <FifthPage />
 
+      {/* const whiteLineStyle = {
+    backgroundColor: "lavenderblush",
+    clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
+    position: "absolute",
+    top: "70vh",
+    left: "auto",
+    right: "0",
+    bottom: "auto",
+    height: " 400vh",
+    width: " 100vw",
+    zIndex: "-1",
+    transition: '4s'
+  }
+  const redLineStyle = {
+    backgroundColor: "#b22c33",
+    clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
+    position: "absolute",
+    top: "134vh",
+    left: "auto",
+    right: "0",
+    bottom: "auto",
+    height: " 400vh",
+    width: " 100vw",
+    zIndex: "-1",
+    transition: '1s'
+  } */}
       <div
-        style={{
+        style={Object.assign({
           backgroundColor: "lavenderblush",
-          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)",
           position: "absolute",
-          top: "0vh",
           left: "auto",
           right: "0",
           bottom: "auto",
           height: " 400vh",
           width: " 100vw",
           zIndex: "-1",
-        }}
+          transition: "2s",
+          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
+        }, page === 2 ? { top: "70vh", } :
+          page === 3 ? { top: "140vh", } :
+            page === 4 ? { top: "210vh" } :
+              page === 5 ? { display: "none" } :
+                { clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)", top: "0vh", })}
       />
       <div
-        style={{
+        style={Object.assign({
           backgroundColor: "#b22c33",
-          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)",
           position: "absolute",
-          top: "54vh",
           left: "auto",
           right: "0",
           bottom: "auto",
           height: " 400vh",
           width: " 100vw",
           zIndex: "-1",
-        }}
+          transition: "2s",
+          clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
+        }, page === 2 ? { top: "134vh", } :
+          page === 3 ? { top: "204vh", } :
+            page === 4 ? { top: "274vh", } :
+              page === 5 ? { display: "none" } :
+                { clipPath: "polygon(100% 0, 100% 6%, 0 85%, 0 80%)", top: "54vh", })}
       />
     </div>
   );
