@@ -5,7 +5,7 @@ import axios from "axios";
 import useWindowDimensions from "./components/windowDimensions";
 
 import FirstPage from "./components/pages/FirstPage/FirstPage";
-import SecondPage from "./components/pages/SecondPage";
+import SecondPage from "./components/pages/SecondPage/SecondPage";
 import ThirdPage from "./components/pages/ThirdPage";
 import ForthPage from "./components/pages/ForthPage";
 import FifthPage from "./components/pages/FifthPage";
@@ -13,6 +13,8 @@ import FifthPage from "./components/pages/FifthPage";
 const App = () => {
   const prevScrollY = useRef(0);
   const [schedule, setSchedule] = useState(false);
+
+  const [quote, setQuote] = useState({});
 
   const [temp, setTemp] = useState(0);
   const [weatherIcon, setWeatherIcon] = useState("50n");
@@ -22,6 +24,7 @@ const App = () => {
   const { height, width } = useWindowDimensions();
 
   useEffect(() => {
+    getQuote();
     getWeather();
     const scheduleStorage = JSON.parse(localStorage.getItem("schedule"));
     if (scheduleStorage) {
@@ -80,6 +83,16 @@ const App = () => {
     }
   }
 
+  async function getQuote() {
+    const url = `https://stoicquotesapi.com/v1/api/quotes/random`;
+    try {
+      const response = await axios.get(url);
+      setQuote(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const moveSchedule = (position) => {
     const result = [];
     if (position === "Right")
@@ -96,8 +109,10 @@ const App = () => {
       }
     setSchedule(result);
   };
-  console.log(page, "page");
 
+  // const zz = [{ 1: "a", 2: "a" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }]
+  // console.log(zz[new Date().getDay()])
+  console.log(new Date().getDay())
   return (
     <div>
       <Navigation width={width} height={height} page={page} setPage={setPage} />
@@ -114,37 +129,12 @@ const App = () => {
         moveSchedule={moveSchedule}
       />
 
-      <SecondPage />
+      <SecondPage quote={quote} />
       <ThirdPage />
       <ForthPage />
       <FifthPage />
 
-      {/* const whiteLineStyle = {
-    backgroundColor: "lavenderblush",
-    clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
-    position: "absolute",
-    top: "70vh",
-    left: "auto",
-    right: "0",
-    bottom: "auto",
-    height: " 400vh",
-    width: " 100vw",
-    zIndex: "-1",
-    transition: '4s'
-  }
-  const redLineStyle = {
-    backgroundColor: "#b22c33",
-    clipPath: "polygon(100% 0, 100% 6%, 0 85%, 5% 80%)",
-    position: "absolute",
-    top: "134vh",
-    left: "auto",
-    right: "0",
-    bottom: "auto",
-    height: " 400vh",
-    width: " 100vw",
-    zIndex: "-1",
-    transition: '1s'
-  } */}
+
       <div
         style={Object.assign({
           backgroundColor: "lavenderblush",
