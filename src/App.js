@@ -110,9 +110,9 @@ const App = () => {
     setSchedule(result);
   };
 
-  // const zz = [{ 1: "a", 2: "a" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }]
-  // console.log(zz[new Date().getDay()])
-  console.log(new Date().getDay())
+  const zz = [{ 1: "a", 2: "a" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }, { 1: "b", 2: "b" }, { 1: "c", 2: "c" }]
+  console.log(zz[new Date().getDay()])
+  //console.log(new Date().getDay())
   return (
     <div>
       <Navigation width={width} height={height} page={page} setPage={setPage} />
@@ -129,7 +129,7 @@ const App = () => {
         moveSchedule={moveSchedule}
       />
 
-      <SecondPage quote={quote} />
+      <SecondPage page={page} quote={quote} />
       <ThirdPage />
       <ForthPage />
       <FifthPage />
